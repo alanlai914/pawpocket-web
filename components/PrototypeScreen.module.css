@@ -1,0 +1,54 @@
+.shell {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 32px;
+  background: #f7e8cb;
+}
+
+.card {
+  width: min(680px, 100%);
+  padding: 44px;
+  border: 3px solid rgba(107, 52, 22, 0.14);
+  border-radius: 36px;
+  background: rgba(255, 248, 233, 0.96);
+  box-shadow: 0 16px 0 rgba(107, 52, 22, 0.12), 0 30px 60px rgba(91, 47, 17, 0.16);
+}
+
+.card h1 {
+  margin: 0 0 18px;
+  font-size: clamp(42px, 7vw, 72px);
+  line-height: 1;
+}
+
+.note {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.65;
+  font-weight: 700;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.nav a {
+  min-height: 64px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: 22px;
+  background: #f7c83e;
+  box-shadow: 0 7px 0 #d79b1d;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.nav a:focus-visible {
+  outline: 5px solid rgba(61, 133, 187, 0.72);
+  outline-offset: 4px;
+}
