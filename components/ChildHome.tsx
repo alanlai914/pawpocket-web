@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { HandIcon, LockIcon, SpeakerIcon } from "@/components/Icon";
+import { Sprite } from "@/components/Sprite";
 
 type NavCardProps = {
   href: string;
@@ -21,22 +22,13 @@ function NavArtwork({ tone }: Pick<NavCardProps, "tone">) {
   if (tone === "wallet") {
     return (
       <div className="wallet-art" aria-hidden="true">
-        <img className="wallet-coin" src="/assets/pawpocket/money/webp/COIN-01A_v1.webp" alt="" />
-        <img className="wallet-object" src="/assets/pawpocket/money/webp/WAL-02_v1.webp" alt="" />
+        <Sprite name="coin1" className="wallet-coin" />
+        <Sprite name="wallet2" className="wallet-object" />
       </div>
     );
   }
 
-  return (
-    <img
-      className="nav-master-art"
-      src={tone === "wish"
-        ? "/assets/pawpocket/navigation/NAV-02_normal_v1.webp"
-        : "/assets/pawpocket/navigation/NAV-03_normal_v1.webp"}
-      alt=""
-      aria-hidden="true"
-    />
-  );
+  return <Sprite name={tone} className="nav-master-art" />;
 }
 
 function NavCard({ href, label, tone, voice }: NavCardProps) {
@@ -54,8 +46,8 @@ export function ChildHome() {
 
   return (
     <main className="child-home">
-      <img className="scene-edge scene-edge--left" src="/assets/pawpocket/background/SCENE-left_v1.webp" alt="" aria-hidden="true" />
-      <img className="scene-edge scene-edge--right" src="/assets/pawpocket/background/SCENE-right_v1.webp" alt="" aria-hidden="true" />
+      <Sprite name="sceneLeft" className="scene-edge scene-edge--left" />
+      <Sprite name="sceneRight" className="scene-edge scene-edge--right" />
 
       <header className="child-home__utility">
         <Link className="parent-button" href="/parent/unlock" aria-label="进入家长区">
@@ -67,8 +59,8 @@ export function ChildHome() {
       <section className="hero" aria-labelledby="balance-title">
         <div className="balance-card">
           <div className="balance-wallet" aria-hidden="true">
-            <img className="balance-wallet__coin" src="/assets/pawpocket/money/webp/COIN-01B_v1.webp" alt="" />
-            <img className="balance-wallet__body" src="/assets/pawpocket/money/webp/WAL-01_v1.webp" alt="" />
+            <Sprite name="coin2" className="balance-wallet__coin" />
+            <Sprite name="wallet1" className="balance-wallet__body" />
           </div>
           <div className="balance-label" id="balance-title">
             <strong>10</strong><span>元</span>
@@ -82,7 +74,7 @@ export function ChildHome() {
         </div>
 
         <div className="cat-stage">
-          <img src="/assets/pawpocket/characters/webp/CAT-01B_v1.webp" alt="三花猫开心地挥手" />
+          <Sprite name="cat" className="cat-character" label="三花猫开心地挥手" />
           <button
             className="voice-button"
             type="button"
