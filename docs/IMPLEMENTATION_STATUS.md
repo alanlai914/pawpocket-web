@@ -1,29 +1,33 @@
-# PawPocket Implementation Status
+# Implementation Status
 
-Updated: 2026-08-03 (UTC+8)
+Branch: `feat/production-assets-and-first-slice`
 
-## Workflow
+## Completed in this slice
 
-Approved masters → independent transparent production assets → repository integration → browser implementation and QA → optional Figma sync.
+- Repository initialized from `PawPocket_Baseline_v2_Locked`.
+- Phase 1 transparent character, wallet, and coin assets copied into runtime paths.
+- NAV-02 and NAV-03 normal-state art extracted from approved masters; labels and press feedback remain code-native.
+- `/child` rebuilt as the first iPad-first visual slice.
+- Parent entry, balance, three primary navigation targets, focus states, touch sizes, reduced-motion handling, and narrow-screen layout implemented.
+- PWA manifest metadata added.
 
-## Current state
+## Source hierarchy
 
-- GitHub App installation and repository write access verified.
-- `main` initialized with the project README.
-- Construction branch: `feat/production-assets-and-first-slice`.
-- Phase 1 production asset package exists outside the repository and remains in edge-QA status.
-- First implementation target: iPad-landscape child home screen with three top-level actions: 钱包、愿望、回顾.
+1. `docs/PRODUCT_SPEC.md`
+2. `docs/DECISIONS.md`
+3. `docs/USER_FLOWS.md`
+4. `docs/DATA_MODEL.md`
+5. `docs/SCREEN_INVENTORY.md`
+6. `docs/COPY_DECK.md`
+7. `docs/ASSET_MANIFEST.md`
 
-## Product constraints
+## Intentional deviations / blockers
 
-- Amounts, labels, buttons, and pressed states remain code-native.
-- Approved contact sheets are not used as interactive page backgrounds.
-- Child primary touch targets are at least 64×64 CSS pixels.
-- Runtime AI is disabled in v1; fixed audio assets will be integrated separately.
+- Approved IndexTTS audio files do not yet exist. The speaker button exposes fixed copy as a visual fallback and does not synthesize speech at runtime.
+- BG-01/BG-02 production scene layers are not approved yet. The implementation uses an approved paper texture sample, approved decorative edge crops, and a code-native temporary wood surface.
+- JAR-01A/B/C are excluded because transparent glass cleanup is not yet approved.
+- Local package installation is blocked in the current execution environment by registry availability; browser QA is performed with a static mirror and Chromium until CI can install dependencies.
 
-## Pending
+## GitHub binary transfer note
 
-- Commit optimized runtime assets.
-- Integrate the locked Next.js baseline.
-- Run browser QA at 1024×768, 768×1024, 412×915, and 360×800.
-- Sync only approved key screens back to Figma after browser acceptance.
+The code and asset files were prepared together locally. The expected paths and SHA-256 values are recorded in `public/assets/pawpocket/asset-manifest.json`; merge remains blocked until those paths exist and `npm run verify:assets` passes.
