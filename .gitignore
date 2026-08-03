@@ -1,0 +1,9 @@
+node_modules/
+.next/
+out/
+build/
+.env*
+!.env.example
+*.log
+.DS_Store
+public/assets/pawpocket/sprites/child-home-atlas_v1.webp
