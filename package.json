@@ -9,7 +9,11 @@
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "verify:assets": "node scripts/verify-assets.mjs"
+    "verify:assets": "node scripts/verify-assets.mjs",
+    "restore:assets": "node scripts/restore-assets.mjs",
+    "predev": "npm run restore:assets",
+    "prebuild": "npm run restore:assets",
+    "preverify:assets": "npm run restore:assets"
   },
   "dependencies": {
     "next": "16.2.12",
