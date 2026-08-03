@@ -1,0 +1,95 @@
+{
+  "generatedAt": "2026-08-03T12:57:00+08:00",
+  "sourcePackage": "PawPocket_All_Confirmed_Assets_2026-08-02",
+  "scope": "child-home-first-slice",
+  "status": "DRAFT_BROWSER_QA",
+  "runtimePolicy": "Repository contains WebP runtime assets. Lossless PNG production sources remain in PawPocket_Production_Assets_Phase1.zip.",
+  "assets": [
+    {
+      "path": "public/assets/pawpocket/background/BG-01_paper-tile_v1.webp",
+      "runtimePath": "/assets/pawpocket/background/BG-01_paper-tile_v1.webp",
+      "bytes": 1074,
+      "sha256": "3d4e294dbf3a4d1b4a88f1a15322d6e4d173b9cdeeb62f28a8a95bce09665789",
+      "format": "webp"
+    },
+    {
+      "path": "public/assets/pawpocket/background/SCENE-left_v1.webp",
+      "runtimePath": "/assets/pawpocket/background/SCENE-left_v1.webp",
+      "bytes": 15492,
+      "sha256": "d3d1bf2bd494a3527c8256a5aceb799d637bebe58285be45c844ecc412e6fa47",
+      "format": "webp"
+    },
+    {
+      "path": "public/assets/pawpocket/background/SCENE-right_v1.webp",
+      "runtimePath": "/assets/pawpocket/background/SCENE-right_v1.webp",
+      "bytes": 5716,
+      "sha256": "aa8384d6a8f0e0ccb429daf92f570cacd1815d67513d0747118a1e8a50d910bc",
+      "format": "webp"
+    },
+    {
+      "path": "public/assets/pawpocket/characters/webp/CAT-01B_v1.webp",
+      "runtimePath": "/assets/pawpocket/characters/webp/CAT-01B_v1.webp",
+      "bytes": 108516,
+      "sha256": "810bd21af457369c800146fb7e8952f545367fd81130768269be6dadfd604dbc",
+      "format": "webp"
+    },
+    {
+      "path": "public/assets/pawpocket/money/webp/COIN-01A_v1.webp",
+      "runtimePath": "/assets/pawpocket/money/webp/COIN-01A_v1.webp",
+      "bytes": 26150,
+      "sha256": "25cbdaf4a13be388254391aeaeb97e5a973a9581cee154f4ba920ed124755b5c",
+      "format": "webp"
+    },
+    {
+      "path": "public/assets/pawpocket/money/webp/COIN-01B_v1.webp",
+      "runtimePath": "/assets/pawpocket/money/webp/COIN-01B_v1.webp",
+      "bytes": 22264,
+      "sha256": "9af520c6837d0544e5f657a103c520081ec3ba39e31344d17dc4a0402768dd91",
+      "format": "webp"
+    },
+    {
+      "path": "public/assets/pawpocket/money/webp/WAL-01_v1.webp",
+      "runtimePath": "/assets/pawpocket/money/webp/WAL-01_v1.webp",
+      "bytes": 41290,
+      "sha256": "29b3e29ad98d14206bf2d49b78f36d1f01abbc683191cd339bc4893c38e513e9",
+      "format": "webp"
+    },
+    {
+      "path": "public/assets/pawpocket/money/webp/WAL-02_v1.webp",
+      "runtimePath": "/assets/pawpocket/money/webp/WAL-02_v1.webp",
+      "bytes": 35742,
+      "sha256": "79436d0181d951234ec1d7ff3fbb48a4b7d5306c00e4cfa6d58c6a7363f2a57c",
+      "format": "webp"
+    },
+    {
+      "path": "public/assets/pawpocket/navigation/NAV-02_normal_v1.webp",
+      "runtimePath": "/assets/pawpocket/navigation/NAV-02_normal_v1.webp",
+      "bytes": 80728,
+      "sha256": "f429d93227a4ff9787563980424e3457bb89cf446e4f5fe3e0cb71dc447a57a0",
+      "format": "webp"
+    },
+    {
+      "path": "public/assets/pawpocket/navigation/NAV-03_normal_v1.webp",
+      "runtimePath": "/assets/pawpocket/navigation/NAV-03_normal_v1.webp",
+      "bytes": 59588,
+      "sha256": "3db0c51ef183d98e1bb5998915bf406057dab64cd485dc0584754839fee85e5d",
+      "format": "webp"
+    }
+  ],
+  "pending": [
+    "CAT-02A",
+    "CAT-02B",
+    "CAT-03A",
+    "CAT-03B",
+    "CAT-04A",
+    "CAT-04B",
+    "COIN-01C",
+    "JAR-01A",
+    "JAR-01B",
+    "JAR-01C",
+    "NAV-01 production illustration",
+    "IndexTTS zh-CN home prompts",
+    "BG-01 final seamless tile",
+    "BG-02 final wood table layer"
+  ]
+}
