@@ -38,3 +38,49 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Run browser smoke test and capture screenshots
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+          npm start > /tmp/pawpocket-next.log 2>&1 &
+          APP_PID=$!
+          trap 'kill "$APP_PID" 2>/dev/null || true' EXIT
+
+          for attempt in {1..30}; do
+            if curl -fsS http://127.0.0.1:3000/child > /tmp/child-home.html; then
+              break
+            fi
+            sleep 1
+          done
+
+          grep -q "钱包" /tmp/child-home.html
+          grep -q "愿望" /tmp/child-home.html
+          grep -q "回顾" /tmp/child-home.html
+          curl -fsS http://127.0.0.1:3000/child/wallet > /dev/null
+          curl -fsS http://127.0.0.1:3000/child/wishes/demo > /dev/null
+          curl -fsS http://127.0.0.1:3000/child/review > /dev/null
+          curl -fsS http://127.0.0.1:3000/parent/unlock > /dev/null
+
+          CHROME_BIN="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser)"
+          test -n "$CHROME_BIN"
+
+          "$CHROME_BIN" --headless=new --no-sandbox --disable-gpu --hide-scrollbars \
+            --window-size=1366,1024 \
+            --screenshot=artifacts/child-home-1366x1024.png \
+            http://127.0.0.1:3000/child
+
+          "$CHROME_BIN" --headless=new --no-sandbox --disable-gpu --hide-scrollbars \
+            --window-size=390,844 \
+            --screenshot=artifacts/child-home-390x844.png \
+            http://127.0.0.1:3000/child
+
+      - name: Upload browser QA screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pawpocket-browser-qa
+          path: artifacts/*.png
+          if-no-files-found: warn
+          retention-days: 14
