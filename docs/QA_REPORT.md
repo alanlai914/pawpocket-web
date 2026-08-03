@@ -4,62 +4,73 @@ Date: 2026-08-03 (UTC+8)
 
 ## Source of truth
 
-- Locked product baseline: `docs/PRODUCT_SPEC.md`, `docs/DECISIONS.md`, `docs/COPY_DECK.md`.
-- Approved visual direction: `public/approved-masters/child-home.png`.
+- Locked product baseline: `PawPocket_Baseline_v2_Locked` confirmed source package.
+- Approved visual direction: `public/approved-masters/child-home.png` inside the locked package.
 - Runtime assets: `public/assets/pawpocket/asset-manifest.json`.
 
 ## Verification method
 
-The current execution environment could not install npm packages because its configured package registry returned missing packages/timeouts. Therefore this pass did **not** claim a successful `next build`.
+GitHub Actions run `30788213769` executed the actual Next.js application on Node.js 22.
 
-For visible browser QA, a static mirror using the same HTML structure, CSS and runtime asset files was loaded into Chromium through Playwright `page.set_content`. The temporary static mirror is not committed; only the resulting evidence images are retained.
+The workflow completed:
+
+- `npm install --no-audit --no-fund`
+- `npm run verify:assets`
+- `npm run lint`
+- `npm test`
+- `npm run build`
+- `npm start`
+- live HTTP checks for `/child`, wallet, wish detail, review, and parent unlock routes
+- headless Chrome screenshots of the live production build
+
+The browser QA screenshots are retained in the `pawpocket-browser-qa` artifact from that run.
 
 ## Viewports checked
 
 | Viewport | Result |
 |---|---|
-| 1366×1024 iPad landscape | No horizontal overflow; all three primary cards visible; parent and voice controls visible. |
-| 390×844 mobile portrait | No horizontal overflow; cards stack vertically; all primary touch targets meet 64 CSS px. |
+| 1366×1024, iPad landscape ratio | No horizontal overflow; balance, character, parent entry, voice control, and all three primary cards visible. |
+| 390×844, phone portrait | No horizontal overflow; the screen continues vertically and primary cards stack below the first viewport. |
 
-## Measured interaction targets
+## Interaction targets
 
 ### iPad landscape
 
-- Navigation cards: approximately 371×410 px each.
-- Parent entry: approximately 164×74 px.
-- Voice control: 92×92 px.
+- Navigation cards: approximately 371×410 CSS px each.
+- Parent entry: approximately 164×74 CSS px.
+- Voice control: 92×92 CSS px.
 
-### Mobile portrait
+### Phone portrait
 
-- Navigation cards: 358×360 px each.
-- Parent entry: approximately 123×64 px.
-- Voice control: 72×72 px.
+- Navigation cards: approximately 358×360 CSS px each.
+- Parent entry: approximately 123×64 CSS px.
+- Voice control: 72×72 CSS px.
 
 All measured primary targets meet the locked 64×64 CSS px minimum.
 
 ## Fidelity ledger
 
-| Comparison point | Approved direction | Browser render | Status |
+| Comparison point | Approved direction | Live browser render | Status |
 |---|---|---|---|
-| Primary composition | Wallet/balance at upper left; waving cat at upper right | Same hierarchy and relative placement | Pass |
-| Main navigation | Three large yellow/pink/green entrances | Same three entrances and order: 钱包、愿望、回顾 | Pass |
-| Code-native information | Amount and labels must not be baked into images | `10元`, navigation labels, parent label and progress are HTML/CSS | Pass |
-| Character and money art | Approved tricolour cat, wallet and cat coins | Uses Phase 1 extracted WebP assets from approved masters | Pass |
-| Child interaction size | Large fixed targets, no text-only primary action | Illustrated cards, short labels and 64 px+ targets | Pass |
-| Scene material | Cream paper, warm light and wood table | Paper sample and temporary code-native wood surface | Partial — final BG layers pending |
-| Voice experience | Fixed, user-triggered audio | User-triggered control exposes fixed copy; no approved audio file yet | Intentional deviation |
+| Primary composition | Large wallet/balance upper left; prominent waving cat upper right | Same hierarchy; scale was increased after first browser review | Pass |
+| Main navigation | Three large yellow/pink/green entrances | Same order and dominant color roles: 钱包、愿望、回顾 | Pass |
+| Code-native information | Amount, labels, controls, and changing state must not be baked into images | `10元`, labels, parent entry, progress, focus, and pressed states are HTML/CSS | Pass |
+| Character and money art | Approved tricolour cat, wallet, and cat coins | Uses the transparent atlas derived from approved masters | Pass |
+| Chinese typography | Readable rounded Chinese interface labels | CI installs Noto CJK for Linux Chrome; iPad uses PingFang SC fallback | Pass |
+| Child interaction size | Large fixed targets and no text-only primary action | Illustrated entrances, short labels, and 64 CSS px+ targets | Pass |
+| Scene material | Cream paper, warm light, and wood table | Approved paper/edge art plus temporary code-native wood surface | Partial — final BG layers pending |
+| Voice experience | Fixed, user-triggered audio | User-triggered control exposes fixed copy; approved audio file is not yet available | Intentional deviation |
 
-## Syntax and structural checks
+## Material issues fixed during QA
 
-- Parsed 33 TypeScript/TSX files using the TypeScript parser: zero syntax errors.
-- Runtime asset files have SHA-256 entries in the asset manifest.
-- Three primary navigation links are present.
-- Reduced-motion and visible keyboard focus styles are implemented.
+1. Long Base64 source transfer corrupted one atlas segment. The segment was split into four smaller SHA-256-verified chunks; final atlas restoration now passes.
+2. Linux Chrome initially rendered Chinese labels as missing-glyph boxes. Noto CJK was added to the visual-QA environment and font stack.
+3. The character and wallet were too small compared with the approved master. Landscape composition and overlap were adjusted before the final screenshots.
+4. The missing `/child/wishes/[id]` route was added so all visible primary navigation paths return successful responses.
 
 ## Remaining gates
 
-1. Install dependencies and run `npm run build`, `npm run lint`, and `npm test` in CI/Codex.
-2. Replace the temporary wood surface with approved BG-02.
-3. Add reviewed IndexTTS audio files and verify tap-to-play behavior.
-4. Perform manual edge QA and approve Phase 1 assets currently marked `DRAFT_EDGE_QA`.
-5. Validate the actual Next.js render against the retained screenshots before merging.
+1. Replace the temporary wood surface and paper sample with approved final BG-01/BG-02 layers.
+2. Add reviewed IndexTTS fixed audio files and verify explicit tap-to-play behavior.
+3. Perform manual edge QA and approve Phase 1 assets currently marked `DRAFT_EDGE_QA`.
+4. Decide whether the remaining product-asset gates block merging the code slice or are deferred to a follow-up PR.
