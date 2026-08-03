@@ -1,0 +1,35 @@
+.scene-edge {
+  height: auto;
+  object-fit: initial;
+}
+
+.scene-edge--left { object-position: initial; }
+.scene-edge--right { object-position: initial; }
+
+.balance-wallet__body {
+  inset: auto;
+  left: 5%;
+  top: 17%;
+  height: auto;
+  object-fit: initial;
+}
+
+.cat-character {
+  width: min(100%, 420px);
+  filter: drop-shadow(0 18px 12px rgba(91, 47, 17, 0.17));
+}
+
+.nav-master-art {
+  width: min(88%, 330px);
+  height: auto;
+  object-fit: initial;
+  filter: drop-shadow(0 18px 11px rgba(91, 47, 17, 0.18));
+}
+
+@media (max-width: 920px), (orientation: portrait) {
+  .scene-edge { height: auto; }
+}
+
+@media (max-width: 680px) {
+  .cat-character { width: min(100%, 290px); }
+}
