@@ -15,64 +15,64 @@
     {
       "path": "public/assets/pawpocket/background/SCENE-left_v1.webp",
       "runtimePath": "/assets/pawpocket/background/SCENE-left_v1.webp",
-      "bytes": 15492,
-      "sha256": "d3d1bf2bd494a3527c8256a5aceb799d637bebe58285be45c844ecc412e6fa47",
+      "bytes": 11088,
+      "sha256": "9d16998429593ce288b23a86997a877788f63def6bd23edaac3e541954ead4dd",
       "format": "webp"
     },
     {
       "path": "public/assets/pawpocket/background/SCENE-right_v1.webp",
       "runtimePath": "/assets/pawpocket/background/SCENE-right_v1.webp",
-      "bytes": 5716,
-      "sha256": "aa8384d6a8f0e0ccb429daf92f570cacd1815d67513d0747118a1e8a50d910bc",
+      "bytes": 3908,
+      "sha256": "d951917bd339fff6e5848bf33185970f1006a4a7482c7c8f67ecae10f17a6b3f",
       "format": "webp"
     },
     {
       "path": "public/assets/pawpocket/characters/webp/CAT-01B_v1.webp",
       "runtimePath": "/assets/pawpocket/characters/webp/CAT-01B_v1.webp",
-      "bytes": 108516,
-      "sha256": "810bd21af457369c800146fb7e8952f545367fd81130768269be6dadfd604dbc",
+      "bytes": 21434,
+      "sha256": "88f072fbbdea660e233d49974dfeee586554bd2b34ed2233a17f5dbd4db5aa45",
       "format": "webp"
     },
     {
       "path": "public/assets/pawpocket/money/webp/COIN-01A_v1.webp",
       "runtimePath": "/assets/pawpocket/money/webp/COIN-01A_v1.webp",
-      "bytes": 26150,
-      "sha256": "25cbdaf4a13be388254391aeaeb97e5a973a9581cee154f4ba920ed124755b5c",
+      "bytes": 10058,
+      "sha256": "92718cc52124325c5049e06b7f5b2e34e256b07e95c2c55a88ca03eaeb4b2814",
       "format": "webp"
     },
     {
       "path": "public/assets/pawpocket/money/webp/COIN-01B_v1.webp",
       "runtimePath": "/assets/pawpocket/money/webp/COIN-01B_v1.webp",
-      "bytes": 22264,
-      "sha256": "9af520c6837d0544e5f657a103c520081ec3ba39e31344d17dc4a0402768dd91",
+      "bytes": 8480,
+      "sha256": "b79ebedc21248ead685d7079bb700a937a6f99f6f8895dbeb8f29fc5c10b6681",
       "format": "webp"
     },
     {
       "path": "public/assets/pawpocket/money/webp/WAL-01_v1.webp",
       "runtimePath": "/assets/pawpocket/money/webp/WAL-01_v1.webp",
-      "bytes": 41290,
-      "sha256": "29b3e29ad98d14206bf2d49b78f36d1f01abbc683191cd339bc4893c38e513e9",
+      "bytes": 12842,
+      "sha256": "3d7804fb113bc0a3477a8334190a7b8fae92724e24eafed09232f5a1de9fd3f0",
       "format": "webp"
     },
     {
       "path": "public/assets/pawpocket/money/webp/WAL-02_v1.webp",
       "runtimePath": "/assets/pawpocket/money/webp/WAL-02_v1.webp",
-      "bytes": 35742,
-      "sha256": "79436d0181d951234ec1d7ff3fbb48a4b7d5306c00e4cfa6d58c6a7363f2a57c",
+      "bytes": 13246,
+      "sha256": "8e68da5eac311368010437e058a3bdd9ed1d9711a3e5bd2b4afd284daa964db8",
       "format": "webp"
     },
     {
       "path": "public/assets/pawpocket/navigation/NAV-02_normal_v1.webp",
       "runtimePath": "/assets/pawpocket/navigation/NAV-02_normal_v1.webp",
-      "bytes": 80728,
-      "sha256": "f429d93227a4ff9787563980424e3457bb89cf446e4f5fe3e0cb71dc447a57a0",
+      "bytes": 20748,
+      "sha256": "23dc618b62b69373763c9c64d76674e4b28973b91bac3278a0ff884764231d01",
       "format": "webp"
     },
     {
       "path": "public/assets/pawpocket/navigation/NAV-03_normal_v1.webp",
       "runtimePath": "/assets/pawpocket/navigation/NAV-03_normal_v1.webp",
-      "bytes": 59588,
-      "sha256": "3db0c51ef183d98e1bb5998915bf406057dab64cd485dc0584754839fee85e5d",
+      "bytes": 14820,
+      "sha256": "05f54d3a30fb64e8816a792141a3eef435e6caaf6a6e995c7828b538cf46e3fa",
       "format": "webp"
     }
   ],
