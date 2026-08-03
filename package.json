@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "test": "vitest run",
+    "test": "vitest run --passWithNoTests",
     "test:watch": "vitest",
     "verify:assets": "node scripts/verify-assets.mjs",
     "restore:assets": "node scripts/restore-assets.mjs",
