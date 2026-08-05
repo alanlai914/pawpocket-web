@@ -1,48 +1,47 @@
 # Implementation Status
 
+Updated: 2026-08-05 (UTC+8)
+
 Branch: `feat/production-assets-and-first-slice`
-Draft PR: `#1`
 
-## Completed in this slice
+## Workflow
 
-- Repository initialized from the locked `PawPocket_Baseline_v2_Locked` source package.
-- Approved child-home character, wallet, coin, wish, review, and scene-edge art consolidated into one transparent WebP atlas.
-- Atlas source is committed as SHA-256-verified text-safe chunks and restored automatically before dev, verification, and build.
-- `/child` implemented as the first iPad-first visual slice.
-- Parent entry, balance, three primary navigation targets, focus states, pressed feedback, touch sizes, reduced-motion handling, and narrow-screen layout implemented.
-- Constrained route boundaries added for wallet, wishes, wish detail, weekly review, and parent unlock.
-- PWA manifest metadata added.
-- GitHub Actions run `30788213769` passed:
-  - dependency installation
-  - runtime asset restoration and SHA-256 verification
-  - ESLint
-  - Vitest
-  - Next.js production build
-  - live Next.js route smoke tests
-  - headless Chrome screenshots at 1366×1024 and 390×844
+Approved masters → independent production assets → repository integration → browser implementation and QA → optional Figma sync.
 
-## Source hierarchy
+## Engineering state
 
-The authoritative documents remain in the confirmed source package for this slice:
+- Next.js App Router + TypeScript baseline is running.
+- Runtime asset restoration and SHA-256 checks pass.
+- ESLint, Vitest, production build, live route smoke tests, and browser screenshot capture pass in GitHub Actions.
+- Draft PR: #1.
 
-1. `PRODUCT_SPEC.md`
-2. `DECISIONS.md`
-3. `USER_FLOWS.md`
-4. `DATA_MODEL.md`
-5. `SCREEN_INVENTORY.md`
-6. `COPY_DECK.md`
-7. `ASSET_MANIFEST.md`
+## Child-home state
 
-Implementation evidence in this repository:
+### iPad / landscape
 
-- `docs/QA_REPORT.md`
-- `public/assets/pawpocket/asset-manifest.json`
-- `.github/workflows/ci.yml`
+- Information hierarchy and routes are implemented.
+- The current 1000×700 atlas is too small for the rendered desktop sizes.
+- Desktop visual status is `FAIL_BLURRY_ASSETS`, even though engineering checks pass.
+- High-resolution replacement assets have been prepared and require repository integration plus edge review.
 
-## Intentional deviations / remaining gates
+### Phone / 390×844
 
-- Approved IndexTTS audio files do not yet exist. The speaker button exposes fixed copy as a visual fallback and does not synthesize speech at runtime.
-- Final BG-01/BG-02 production scene layers are not approved yet. The implementation uses an approved paper texture sample, approved scene-edge crops, and a temporary code-native wood surface.
-- JAR-01A/B/C are excluded because transparent glass cleanup is not yet approved.
-- Phase 1 transparent assets remain `DRAFT_EDGE_QA` until manual edge inspection is signed off.
-- The PR remains draft until those product-asset gates are resolved or explicitly deferred.
+- A dedicated compact composition is implemented.
+- Balance and cat appear side by side.
+- 钱包、愿望、回顾 all appear within the first viewport.
+- No horizontal overflow; primary targets remain at least 64 CSS px.
+
+## Copy and audio
+
+- The confirmed package already contained a locked `COPY_DECK.md`; it has now been restored to the repository.
+- `docs/TTS_SCRIPT_REVIEW_v1.md` contains the review draft for all core child flows.
+- `content/audio/tts-manifest.review.json` defines the six-file first IndexTTS batch.
+- Audio has not been generated because the copy and voice identity are not yet approved.
+
+## Remaining blockers
+
+1. Replace the low-resolution child-home atlas with high-resolution assets.
+2. Approve transparent edges and re-run iPad visual QA.
+3. Approve the TTS script and select/authorize a voice reference.
+4. Connect the approved manifest to the local IndexTTS deployment and review generated WAV files.
+5. Approve final BG-01/BG-02 scene layers.
