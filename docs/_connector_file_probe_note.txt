@@ -1,0 +1,1 @@
+Binary file upload is being verified through Git data API.
