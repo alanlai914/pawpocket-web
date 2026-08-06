@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { HandIcon, LockIcon, SpeakerIcon } from "@/components/Icon";
@@ -12,18 +13,62 @@ type NavCardProps = {
   voice: string;
 };
 
+type RuntimeAssetProps = {
+  src: string;
+  alt: string;
+  className: string;
+  width: number;
+  height: number;
+  fallback: "cat" | "coin1" | "coin2" | "wallet1" | "wallet2";
+};
+
 const navItems: NavCardProps[] = [
   { href: "/child/wallet", label: "钱包", tone: "wallet", voice: "来看看现在有多少钱。" },
   { href: "/child/wishes", label: "愿望", tone: "wish", voice: "来看看你喜欢的东西。" },
   { href: "/child/review", label: "回顾", tone: "review", voice: "我们一起看看这一周。" },
 ];
 
+function RuntimeAsset({ src, alt, className, width, height, fallback }: RuntimeAssetProps) {
+  const [failed, setFailed] = useState(false);
+
+  if (failed) {
+    return <Sprite name={fallback} className={className} label={alt || undefined} />;
+  }
+
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      className={className}
+      width={width}
+      height={height}
+      sizes="(max-width: 680px) 52vw, (max-width: 920px) 38vw, 480px"
+      unoptimized
+      onError={() => setFailed(true)}
+    />
+  );
+}
+
 function NavArtwork({ tone }: Pick<NavCardProps, "tone">) {
   if (tone === "wallet") {
     return (
       <div className="wallet-art" aria-hidden="true">
-        <Sprite name="coin1" className="wallet-coin" />
-        <Sprite name="wallet2" className="wallet-object" />
+        <RuntimeAsset
+          src="/assets/pawpocket/home-v1/COIN-01B.webp"
+          alt=""
+          className="wallet-coin"
+          width={749}
+          height={754}
+          fallback="coin1"
+        />
+        <RuntimeAsset
+          src="/assets/pawpocket/home-v1/WAL-02.webp"
+          alt=""
+          className="wallet-object"
+          width={1101}
+          height={955}
+          fallback="wallet2"
+        />
       </div>
     );
   }
@@ -59,8 +104,22 @@ export function ChildHome() {
       <section className="hero" aria-labelledby="balance-title">
         <div className="balance-card">
           <div className="balance-wallet" aria-hidden="true">
-            <Sprite name="coin2" className="balance-wallet__coin" />
-            <Sprite name="wallet1" className="balance-wallet__body" />
+            <RuntimeAsset
+              src="/assets/pawpocket/home-v1/COIN-01B.webp"
+              alt=""
+              className="balance-wallet__coin"
+              width={749}
+              height={754}
+              fallback="coin2"
+            />
+            <RuntimeAsset
+              src="/assets/pawpocket/home-v1/WAL-01.webp"
+              alt=""
+              className="balance-wallet__body"
+              width={869}
+              height={775}
+              fallback="wallet1"
+            />
           </div>
           <div className="balance-label" id="balance-title">
             <strong>10</strong><span>元</span>
@@ -74,7 +133,14 @@ export function ChildHome() {
         </div>
 
         <div className="cat-stage">
-          <Sprite name="cat" className="cat-character" label="三花猫开心地挥手" />
+          <RuntimeAsset
+            src="/assets/pawpocket/home-v1/CAT-01B.webp"
+            alt="三花猫开心地挥手"
+            className="cat-character"
+            width={711}
+            height={912}
+            fallback="cat"
+          />
           <button
             className="voice-button"
             type="button"
