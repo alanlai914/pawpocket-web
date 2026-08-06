@@ -1,25 +1,43 @@
 # PawPocket uploaded asset normalization report
 
-Status: **CANDIDATE_NOT_APPROVED**
+Status: **APPROVED_BY_USER_PENDING_BINARY_IMPORT**
 
-## Runtime candidates created
+## Approved runtime assets
 
-- `CAT-01B`: normalized from the uploaded transparent PNG.
-- `COIN-01B`: renamed from the generic ChatGPT filename and normalized.
-- `WAL-01-candidate`: the uploaded transparent file named `WAL-02.png` has no cat badge, so it is not accepted as WAL-02. It is retained only as a WAL-01 candidate.
-- `WAL-02`: reconstructed from the packaged magenta QA render using a border-seeded foreground mask, one-pixel antialiasing, and edge-color decontamination. It includes the cat badge and now has a transparent PNG/WebP candidate.
+The user approved the normalized transparent runtime assets and their individual QA:
 
-## Remaining gate
+- `CAT-01B.webp`
+- `COIN-01B.webp`
+- `WAL-01.webp` — promoted from the uploaded no-badge wallet candidate
+- `WAL-02.webp` — approved cat-badge wallet reconstructed from the packaged WAL-02 group
 
-`WAL-02` is no longer missing, but it remains a candidate until the user visually approves its edge QA and confirms that this packaged WAL-02 variant is the intended production master.
+## Runtime integration
 
-## Processing
+`components/ChildHome.tsx` now prefers the four independent assets from:
 
-- Alpha values below 8 were cleared to remove near-transparent generation haze.
-- Detached low-alpha halos and broad ground shadows were removed while preserving edge antialiasing near the solid object.
-- Each object was cropped to its visible alpha bounds and given a 64 px transparent safety margin.
-- The RGB magenta WAL-02 QA render was converted to transparent RGBA with foreground segmentation and edge-color decontamination.
-- PNG masters and lossless WebP runtime candidates were generated.
-- Individual black, magenta, cream, wood, and alpha-mask QA files were generated.
+```text
+public/assets/pawpocket/home-v1/
+```
 
-No asset has been marked APPROVED or committed to the production runtime yet. The normalized binary package is available separately for user review.
+The mapping is:
+
+- Balance wallet body → `WAL-01.webp`
+- Balance and wallet-entry coin → `COIN-01B.webp`
+- Wallet navigation entry → `WAL-02.webp`
+- Home character → `CAT-01B.webp`
+
+A runtime error fallback preserves the previous atlas sprite only when an approved independent file is missing. The old atlas therefore no longer owns these four visual regions once the files are present.
+
+## Binary integrity
+
+The exact required names, dimensions, byte sizes and SHA-256 values are recorded in `public/assets/pawpocket/home-v1/manifest.candidate.json`.
+
+The approved binary package is `PawPocket_Home_Runtime_Approved_v1.zip`; its ZIP SHA-256 is:
+
+```text
+c192551cce99806131f1e72c3e06f6626e4346d92f0f5e58c1510c36ff96c140
+```
+
+## Remaining mechanical step
+
+The GitHub connector used in this chat can write repository text and Git objects, but it does not expose a local-file parameter for uploading binary files from the runtime. The four approved WebP files still need to be placed at the exact paths above. Until that happens, the fallback prevents a broken page and the manifest keeps the branch state explicit.
