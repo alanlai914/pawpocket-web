@@ -1,1 +1,0 @@
-Temporary probe. Remove before finalizing asset commit.
