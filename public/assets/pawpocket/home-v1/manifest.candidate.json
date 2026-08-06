@@ -1,85 +1,47 @@
 {
   "package": "PawPocket_Standardized_Assets_v1",
-  "status": "CANDIDATE_NOT_APPROVED",
+  "status": "APPROVED_BY_USER_PENDING_BINARY_IMPORT",
   "alpha_cleanup_threshold": 8,
+  "runtime_directory": "public/assets/pawpocket/home-v1",
   "assets": [
     {
       "id": "CAT-01B",
-      "source_file_display": "CAT-01B.png",
-      "source_size": [1536, 1024],
-      "source_mode": "RGBA",
-      "alpha_bbox_threshold_8": [502, 77, 1085, 861],
+      "runtime_name": "CAT-01B.webp",
       "output_size": [711, 912],
-      "png": {
-        "path": "runtime-candidates/CAT-01B.png",
-        "bytes": 672285,
-        "sha256": "27471c702ac58b5ea6ac4884d22bb0648893652d344546c72d8a8efea9469274"
-      },
-      "webp": {
-        "path": "runtime-candidates/CAT-01B.webp",
-        "bytes": 501070,
-        "sha256": "b5a3b46d5991abdbc7e35e21b14fed235f3d25c1a4ae328dbe26867160a0badc"
-      }
+      "bytes": 501070,
+      "sha256": "b5a3b46d5991abdbc7e35e21b14fed235f3d25c1a4ae328dbe26867160a0badc",
+      "status": "APPROVED"
     },
     {
       "id": "COIN-01B",
-      "source_file_display": "uploaded generic ChatGPT filename",
-      "source_size": [1536, 1024],
-      "source_mode": "RGBA",
-      "alpha_bbox_threshold_8": [500, 146, 1121, 772],
+      "runtime_name": "COIN-01B.webp",
       "output_size": [749, 754],
-      "png": {
-        "path": "runtime-candidates/COIN-01B.png",
-        "bytes": 508882,
-        "sha256": "64d0b3b097fd6dbba95b7079bb7d638e949ab975ca5d65d980003713961292bb"
-      },
-      "webp": {
-        "path": "runtime-candidates/COIN-01B.webp",
-        "bytes": 395492,
-        "sha256": "ec7c124142f8c1b786b58eafdce07cb5f2b60073c9baec35947a82669c1b967a"
-      }
+      "bytes": 395492,
+      "sha256": "ec7c124142f8c1b786b58eafdce07cb5f2b60073c9baec35947a82669c1b967a",
+      "status": "APPROVED"
     },
     {
-      "id": "WAL-01-candidate",
-      "source_file_display": "WAL-02.png",
-      "source_size": [1536, 1024],
-      "source_mode": "RGBA",
-      "alpha_bbox_threshold_8": [404, 184, 1145, 831],
+      "id": "WAL-01",
+      "runtime_name": "WAL-01.webp",
+      "source_file_display": "WAL-01-candidate.webp",
       "output_size": [869, 775],
-      "png": {
-        "path": "runtime-candidates/WAL-01-candidate.png",
-        "bytes": 1268285,
-        "sha256": "8d127f7a7e2e220e71352eebefe4b807035025d03f82cf44b86b9e5e1d6d5aa0"
-      },
-      "webp": {
-        "path": "runtime-candidates/WAL-01-candidate.webp",
-        "bytes": 828910,
-        "sha256": "15df543a4a2d6ef4a01ceb5cc2d47d664618c7f83ad0a0f21a55dfef1978f81e"
-      },
-      "classification_note": "No cat badge; retained only as a WAL-01 candidate."
+      "bytes": 828910,
+      "sha256": "15df543a4a2d6ef4a01ceb5cc2d47d664618c7f83ad0a0f21a55dfef1978f81e",
+      "status": "APPROVED"
     },
     {
       "id": "WAL-02",
-      "source_file_display": "WAL-02 (5).png",
-      "source_size": [1254, 1254],
-      "source_mode": "RGB magenta QA source",
-      "extraction": "border-seeded GrabCut + one-pixel antialiasing + edge-color decontamination",
+      "runtime_name": "WAL-02.webp",
       "output_size": [1101, 955],
-      "png": {
-        "path": "runtime-candidates/WAL-02.png",
-        "bytes": 1812115,
-        "sha256": "4ae554edb361ca777cda824c2eb4b4c54b2c870572bc4d2c46fd4c19a4ce6d4c"
-      },
-      "webp": {
-        "path": "runtime-candidates/WAL-02.webp",
-        "bytes": 1139604,
-        "sha256": "bdc6150a12626981e1248f286728af8100beff8963a19b2df4bfde80eefe1669"
-      },
-      "status": "CANDIDATE_FROM_PACKAGED_WAL-02_GROUP"
+      "bytes": 1139604,
+      "sha256": "bdc6150a12626981e1248f286728af8100beff8963a19b2df4bfde80eefe1669",
+      "status": "APPROVED"
     }
   ],
-  "blockers": [
-    "WAL-02 requires user visual approval against its individual edge QA files.",
-    "Runtime binaries are packaged locally but are not yet present in the Git branch."
-  ]
+  "integration": {
+    "component": "components/ChildHome.tsx",
+    "preferred_assets": ["CAT-01B", "COIN-01B", "WAL-01", "WAL-02"],
+    "fallback": "legacy child-home atlas is used only when an approved independent file is missing",
+    "remaining_binary_step": "Place the four approved WebP files in runtime_directory with the exact runtime names and hashes above."
+  }
 }
