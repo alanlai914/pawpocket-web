@@ -1,0 +1,66 @@
+{
+  "package": "PawPocket_Standardized_Assets_v1",
+  "status": "CANDIDATE_NOT_APPROVED",
+  "alpha_cleanup_threshold": 8,
+  "assets": [
+    {
+      "id": "CAT-01B",
+      "source_file_display": "CAT-01B.png",
+      "source_size": [1536, 1024],
+      "source_mode": "RGBA",
+      "alpha_bbox_threshold_8": [502, 77, 1085, 861],
+      "output_size": [711, 912],
+      "png": {
+        "path": "runtime-candidates/CAT-01B.png",
+        "bytes": 672285,
+        "sha256": "27471c702ac58b5ea6ac4884d22bb0648893652d344546c72d8a8efea9469274"
+      },
+      "webp": {
+        "path": "runtime-candidates/CAT-01B.webp",
+        "bytes": 501070,
+        "sha256": "b5a3b46d5991abdbc7e35e21b14fed235f3d25c1a4ae328dbe26867160a0badc"
+      }
+    },
+    {
+      "id": "COIN-01B",
+      "source_file_display": "uploaded generic ChatGPT filename",
+      "source_size": [1536, 1024],
+      "source_mode": "RGBA",
+      "alpha_bbox_threshold_8": [500, 146, 1121, 772],
+      "output_size": [749, 754],
+      "png": {
+        "path": "runtime-candidates/COIN-01B.png",
+        "bytes": 508882,
+        "sha256": "64d0b3b097fd6dbba95b7079bb7d638e949ab975ca5d65d980003713961292bb"
+      },
+      "webp": {
+        "path": "runtime-candidates/COIN-01B.webp",
+        "bytes": 395492,
+        "sha256": "ec7c124142f8c1b786b58eafdce07cb5f2b60073c9baec35947a82669c1b967a"
+      }
+    },
+    {
+      "id": "WAL-01-candidate",
+      "source_file_display": "WAL-02.png",
+      "source_size": [1536, 1024],
+      "source_mode": "RGBA",
+      "alpha_bbox_threshold_8": [404, 184, 1145, 831],
+      "output_size": [869, 775],
+      "png": {
+        "path": "runtime-candidates/WAL-01-candidate.png",
+        "bytes": 1268285,
+        "sha256": "8d127f7a7e2e220e71352eebefe4b807035025d03f82cf44b86b9e5e1d6d5aa0"
+      },
+      "webp": {
+        "path": "runtime-candidates/WAL-01-candidate.webp",
+        "bytes": 828910,
+        "sha256": "15df543a4a2d6ef4a01ceb5cc2d47d664618c7f83ad0a0f21a55dfef1978f81e"
+      },
+      "classification_note": "No cat badge; cannot be accepted as WAL-02."
+    }
+  ],
+  "blockers": [
+    "WAL-02 requires a transparent master with the approved cat badge.",
+    "Binary candidates are not yet present in the Git branch; this manifest records the locally normalized package."
+  ]
+}
