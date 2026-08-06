@@ -56,11 +56,30 @@
         "bytes": 828910,
         "sha256": "15df543a4a2d6ef4a01ceb5cc2d47d664618c7f83ad0a0f21a55dfef1978f81e"
       },
-      "classification_note": "No cat badge; cannot be accepted as WAL-02."
+      "classification_note": "No cat badge; retained only as a WAL-01 candidate."
+    },
+    {
+      "id": "WAL-02",
+      "source_file_display": "WAL-02 (5).png",
+      "source_size": [1254, 1254],
+      "source_mode": "RGB magenta QA source",
+      "extraction": "border-seeded GrabCut + one-pixel antialiasing + edge-color decontamination",
+      "output_size": [1101, 955],
+      "png": {
+        "path": "runtime-candidates/WAL-02.png",
+        "bytes": 1812115,
+        "sha256": "4ae554edb361ca777cda824c2eb4b4c54b2c870572bc4d2c46fd4c19a4ce6d4c"
+      },
+      "webp": {
+        "path": "runtime-candidates/WAL-02.webp",
+        "bytes": 1139604,
+        "sha256": "bdc6150a12626981e1248f286728af8100beff8963a19b2df4bfde80eefe1669"
+      },
+      "status": "CANDIDATE_FROM_PACKAGED_WAL-02_GROUP"
     }
   ],
   "blockers": [
-    "WAL-02 requires a transparent master with the approved cat badge.",
-    "Binary candidates are not yet present in the Git branch; this manifest records the locally normalized package."
+    "WAL-02 requires user visual approval against its individual edge QA files.",
+    "Runtime binaries are packaged locally but are not yet present in the Git branch."
   ]
 }
