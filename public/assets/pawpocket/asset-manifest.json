@@ -1,0 +1,74 @@
+{
+  "generatedAt": "2026-08-06T14:56:00+08:00",
+  "sourcePackage": "PawPocket_Standardized_Assets_v1",
+  "scope": "child-home-first-slice",
+  "status": "APPROVED_ASSETS_REQUIRED",
+  "runtimePolicy": "CAT-01B, COIN-01B, WAL-01, and WAL-02 are user-approved independent transparent WebP runtime assets. CI must fail if any approved file is missing or differs from its locked SHA-256. The legacy atlas remains only for wish, review, and scene artwork until those assets are replaced.",
+  "assets": [
+    {
+      "path": "public/assets/pawpocket/background/BG-01_paper-tile_v1.webp",
+      "runtimePath": "/assets/pawpocket/background/BG-01_paper-tile_v1.webp",
+      "bytes": 1074,
+      "sha256": "3d4e294dbf3a4d1b4a88f1a15322d6e4d173b9cdeeb62f28a8a95bce09665789",
+      "format": "webp",
+      "status": "temporary"
+    },
+    {
+      "path": "public/assets/pawpocket/sprites/child-home-atlas_v1.webp",
+      "runtimePath": "/assets/pawpocket/sprites/child-home-atlas_v1.webp",
+      "bytes": 34532,
+      "sha256": "4cf3b6799a0ff2a3aff4890f26b580455e754fdf758193ba6f2cd58d80e2589a",
+      "format": "webp",
+      "status": "legacy-partial-fallback"
+    },
+    {
+      "id": "CAT-01B",
+      "path": "public/assets/pawpocket/home-v1/CAT-01B.webp",
+      "runtimePath": "/assets/pawpocket/home-v1/CAT-01B.webp",
+      "bytes": 501070,
+      "sha256": "b5a3b46d5991abdbc7e35e21b14fed235f3d25c1a4ae328dbe26867160a0badc",
+      "format": "webp",
+      "status": "APPROVED_FOR_RUNTIME"
+    },
+    {
+      "id": "COIN-01B",
+      "path": "public/assets/pawpocket/home-v1/COIN-01B.webp",
+      "runtimePath": "/assets/pawpocket/home-v1/COIN-01B.webp",
+      "bytes": 395492,
+      "sha256": "ec7c124142f8c1b786b58eafdce07cb5f2b60073c9baec35947a82669c1b967a",
+      "format": "webp",
+      "status": "APPROVED_FOR_RUNTIME"
+    },
+    {
+      "id": "WAL-01",
+      "path": "public/assets/pawpocket/home-v1/WAL-01.webp",
+      "runtimePath": "/assets/pawpocket/home-v1/WAL-01.webp",
+      "bytes": 828910,
+      "sha256": "15df543a4a2d6ef4a01ceb5cc2d47d664618c7f83ad0a0f21a55dfef1978f81e",
+      "format": "webp",
+      "status": "APPROVED_FOR_RUNTIME"
+    },
+    {
+      "id": "WAL-02",
+      "path": "public/assets/pawpocket/home-v1/WAL-02.webp",
+      "runtimePath": "/assets/pawpocket/home-v1/WAL-02.webp",
+      "bytes": 1139604,
+      "sha256": "bdc6150a12626981e1248f286728af8100beff8963a19b2df4bfde80eefe1669",
+      "format": "webp",
+      "status": "APPROVED_FOR_RUNTIME"
+    }
+  ],
+  "pending": [
+    "COIN-01A",
+    "WISH-entry",
+    "REVIEW-entry",
+    "scene-left",
+    "scene-right",
+    "JAR-01A",
+    "JAR-01B",
+    "JAR-01C",
+    "IndexTTS zh-CN home prompts",
+    "BG-01 final seamless tile",
+    "BG-02 final wood table layer"
+  ]
+}

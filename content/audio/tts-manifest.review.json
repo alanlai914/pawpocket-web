@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "status": "REVIEW_REQUIRED",
+  "engine": "IndexTTS",
+  "voiceProfile": "PENDING_USER_APPROVAL",
+  "outputDirectory": "public/audio/zh-CN",
+  "autoplay": false,
+  "firstBatch": [
+    {
+      "id": "TTS-HOME-001",
+      "file": "home-guide.wav",
+      "route": "/child",
+      "trigger": "home-speaker",
+      "text": "选一个你想看的地方吧。",
+      "source": "proposed"
+    },
+    {
+      "id": "TTS-HOME-002",
+      "file": "home-wallet.wav",
+      "route": "/child",
+      "trigger": "wallet-entry-speaker",
+      "text": "来看看小钱包里有多少钱。",
+      "source": "locked-copy-adjusted"
+    },
+    {
+      "id": "TTS-HOME-003",
+      "file": "home-wish.wav",
+      "route": "/child",
+      "trigger": "wish-entry-speaker",
+      "text": "来看看你喜欢的东西。",
+      "source": "locked-copy"
+    },
+    {
+      "id": "TTS-HOME-004",
+      "file": "home-review.wav",
+      "route": "/child",
+      "trigger": "review-entry-speaker",
+      "text": "我们一起看看这一周。",
+      "source": "locked-copy"
+    },
+    {
+      "id": "TTS-HOME-005",
+      "file": "home-parent.wav",
+      "route": "/child",
+      "trigger": "parent-entry",
+      "text": "这里要请家长来。",
+      "source": "locked-copy"
+    },
+    {
+      "id": "TTS-HOME-006",
+      "file": "home-balance-10.wav",
+      "route": "/child",
+      "trigger": "balance-speaker",
+      "text": "你的小钱包里现在有十元。",
+      "source": "locked-template-expanded"
+    }
+  ]
+}

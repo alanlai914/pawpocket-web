@@ -1,0 +1,99 @@
+name: PawPocket CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - feat/production-assets-and-first-slice
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Verify runtime assets
+        run: npm run verify:assets
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      - name: Run browser smoke test and capture screenshots
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends fonts-noto-cjk >/dev/null
+          fc-cache -f
+
+          mkdir -p artifacts
+          npm start > /tmp/pawpocket-next.log 2>&1 &
+          APP_PID=$!
+          trap 'kill "$APP_PID" 2>/dev/null || true' EXIT
+
+          for attempt in {1..30}; do
+            if curl -fsS http://127.0.0.1:3000/child > /tmp/child-home.html; then
+              break
+            fi
+            sleep 1
+          done
+
+          grep -q "钱包" /tmp/child-home.html
+          grep -q "愿望" /tmp/child-home.html
+          grep -q "回顾" /tmp/child-home.html
+          curl -fsS http://127.0.0.1:3000/child/wallet > /dev/null
+          curl -fsS http://127.0.0.1:3000/child/wishes/demo > /dev/null
+          curl -fsS http://127.0.0.1:3000/child/review > /dev/null
+          curl -fsS http://127.0.0.1:3000/parent/unlock > /dev/null
+
+          # Confirm the approved independent home assets are actually served by Next.
+          curl -fsS http://127.0.0.1:3000/assets/pawpocket/home-v1/CAT-01B.webp > /tmp/CAT-01B.webp
+          curl -fsS http://127.0.0.1:3000/assets/pawpocket/home-v1/COIN-01B.webp > /tmp/COIN-01B.webp
+          curl -fsS http://127.0.0.1:3000/assets/pawpocket/home-v1/WAL-01.webp > /tmp/WAL-01.webp
+          curl -fsS http://127.0.0.1:3000/assets/pawpocket/home-v1/WAL-02.webp > /tmp/WAL-02.webp
+
+          CHROME_BIN="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser)"
+          test -n "$CHROME_BIN"
+
+          # Large transparent WebP files need time to download and decode before screenshot capture.
+          "$CHROME_BIN" --headless=new --no-sandbox --disable-gpu --hide-scrollbars \
+            --virtual-time-budget=5000 \
+            --window-size=1366,1024 \
+            --screenshot=artifacts/child-home-1366x1024.png \
+            http://127.0.0.1:3000/child
+
+          "$CHROME_BIN" --headless=new --no-sandbox --disable-gpu --hide-scrollbars \
+            --virtual-time-budget=5000 \
+            --window-size=390,844 \
+            --screenshot=artifacts/child-home-390x844.png \
+            http://127.0.0.1:3000/child
+
+      - name: Upload browser QA screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pawpocket-browser-qa
+          path: artifacts/*.png
+          if-no-files-found: warn
+          retention-days: 14

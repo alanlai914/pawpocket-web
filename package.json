@@ -1,0 +1,32 @@
+{
+  "name": "pawpocket",
+  "version": "0.2.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --hostname 0.0.0.0",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "test": "vitest run --passWithNoTests",
+    "test:watch": "vitest",
+    "verify:assets": "node scripts/verify-assets.mjs",
+    "restore:assets": "node scripts/restore-assets.mjs",
+    "predev": "npm run restore:assets",
+    "prebuild": "npm run restore:assets",
+    "preverify:assets": "npm run restore:assets"
+  },
+  "dependencies": {
+    "next": "16.2.12",
+    "react": "19.2.7",
+    "react-dom": "19.2.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "16.2.12",
+    "typescript": "^5.8.0",
+    "vitest": "^3.2.0"
+  }
+}
