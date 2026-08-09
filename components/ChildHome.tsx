@@ -19,7 +19,6 @@ type RuntimeAssetProps = {
   className: string;
   width: number;
   height: number;
-  fallback: "cat" | "coin1" | "coin2" | "wallet1" | "wallet2";
 };
 
 const navItems: NavCardProps[] = [
@@ -28,13 +27,7 @@ const navItems: NavCardProps[] = [
   { href: "/child/review", label: "回顾", tone: "review", voice: "我们一起看看这一周。" },
 ];
 
-function RuntimeAsset({ src, alt, className, width, height, fallback }: RuntimeAssetProps) {
-  const [failed, setFailed] = useState(false);
-
-  if (failed) {
-    return <Sprite name={fallback} className={className} label={alt || undefined} />;
-  }
-
+function RuntimeAsset({ src, alt, className, width, height }: RuntimeAssetProps) {
   return (
     <Image
       src={src}
@@ -44,7 +37,6 @@ function RuntimeAsset({ src, alt, className, width, height, fallback }: RuntimeA
       height={height}
       sizes="(max-width: 680px) 52vw, (max-width: 920px) 38vw, 480px"
       unoptimized
-      onError={() => setFailed(true)}
     />
   );
 }
@@ -59,7 +51,6 @@ function NavArtwork({ tone }: Pick<NavCardProps, "tone">) {
           className="wallet-coin"
           width={749}
           height={754}
-          fallback="coin1"
         />
         <RuntimeAsset
           src="/assets/pawpocket/home-v1/WAL-02.webp"
@@ -67,7 +58,6 @@ function NavArtwork({ tone }: Pick<NavCardProps, "tone">) {
           className="wallet-object"
           width={1101}
           height={955}
-          fallback="wallet2"
         />
       </div>
     );
@@ -110,7 +100,6 @@ export function ChildHome() {
               className="balance-wallet__coin"
               width={749}
               height={754}
-              fallback="coin2"
             />
             <RuntimeAsset
               src="/assets/pawpocket/home-v1/WAL-01.webp"
@@ -118,7 +107,6 @@ export function ChildHome() {
               className="balance-wallet__body"
               width={869}
               height={775}
-              fallback="wallet1"
             />
           </div>
           <div className="balance-label" id="balance-title">
@@ -139,7 +127,6 @@ export function ChildHome() {
             className="cat-character"
             width={711}
             height={912}
-            fallback="cat"
           />
           <button
             className="voice-button"
