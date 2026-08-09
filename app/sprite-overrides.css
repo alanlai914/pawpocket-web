@@ -10,11 +10,18 @@ body {
 .scene-edge--left { object-position: initial; }
 .scene-edge--right { object-position: initial; }
 
+.balance-wallet__body,
+.balance-wallet__coin,
+.wallet-object,
+.wallet-coin,
+.cat-character {
+  height: auto;
+}
+
 .balance-wallet__body {
   inset: auto;
   left: 5%;
   top: 17%;
-  height: auto;
   object-fit: initial;
 }
 
@@ -110,6 +117,7 @@ body {
     width: 37%;
     left: 31%;
     top: 0;
+    height: auto;
   }
 
   .balance-label {
@@ -155,6 +163,7 @@ body {
 
   .cat-character {
     width: min(108%, 182px);
+    height: auto;
     transform: translateY(12px);
   }
 
@@ -225,12 +234,14 @@ body {
 
   .wallet-object {
     width: 104px;
+    height: auto;
     left: 7px;
     bottom: 0;
   }
 
   .wallet-coin {
     width: 54px;
+    height: auto;
     left: 33px;
     top: -2px;
   }
