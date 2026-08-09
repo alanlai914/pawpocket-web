@@ -67,15 +67,24 @@ jobs:
           curl -fsS http://127.0.0.1:3000/child/review > /dev/null
           curl -fsS http://127.0.0.1:3000/parent/unlock > /dev/null
 
+          # Confirm the approved independent home assets are actually served by Next.
+          curl -fsS http://127.0.0.1:3000/assets/pawpocket/home-v1/CAT-01B.webp > /tmp/CAT-01B.webp
+          curl -fsS http://127.0.0.1:3000/assets/pawpocket/home-v1/COIN-01B.webp > /tmp/COIN-01B.webp
+          curl -fsS http://127.0.0.1:3000/assets/pawpocket/home-v1/WAL-01.webp > /tmp/WAL-01.webp
+          curl -fsS http://127.0.0.1:3000/assets/pawpocket/home-v1/WAL-02.webp > /tmp/WAL-02.webp
+
           CHROME_BIN="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser)"
           test -n "$CHROME_BIN"
 
+          # Large transparent WebP files need time to download and decode before screenshot capture.
           "$CHROME_BIN" --headless=new --no-sandbox --disable-gpu --hide-scrollbars \
+            --virtual-time-budget=5000 \
             --window-size=1366,1024 \
             --screenshot=artifacts/child-home-1366x1024.png \
             http://127.0.0.1:3000/child
 
           "$CHROME_BIN" --headless=new --no-sandbox --disable-gpu --hide-scrollbars \
+            --virtual-time-budget=5000 \
             --window-size=390,844 \
             --screenshot=artifacts/child-home-390x844.png \
             http://127.0.0.1:3000/child
